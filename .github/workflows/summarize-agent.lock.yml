@@ -24,7 +24,7 @@
 #
 # gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"f75c47ddb286a35edf4c4c35c4ada8ccfbac7ba88022291021249a73b50b77a0"}
 
-name: "Summarize Agent"
+name: "Summarize Agent (Russian)"
 "on":
   issue_comment:
     types:
@@ -41,7 +41,7 @@ permissions: {}
 concurrency:
   group: "gh-aw-${{ github.workflow }}-${{ github.event.issue.number || github.event.pull_request.number }}"
 
-run-name: "Summarize Agent"
+run-name: "Summarize Agent (Russian)"
 
 jobs:
   activation:
@@ -333,7 +333,7 @@ jobs:
               version: "",
               agent_version: "0.0.410",
               cli_version: "v0.46.0",
-              workflow_name: "Summarize Agent",
+              workflow_name: "Summarize Agent (Russian)",
               experimental: false,
               supports_tools_allowlist: true,
               run_id: context.runId,
@@ -841,7 +841,7 @@ jobs:
         env:
           GH_AW_AGENT_OUTPUT: ${{ env.GH_AW_AGENT_OUTPUT }}
           GH_AW_NOOP_MAX: 1
-          GH_AW_WORKFLOW_NAME: "Summarize Agent"
+          GH_AW_WORKFLOW_NAME: "Summarize Agent (Russian)"
         with:
           github-token: ${{ secrets.GH_AW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
           script: |
@@ -854,7 +854,7 @@ jobs:
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
           GH_AW_AGENT_OUTPUT: ${{ env.GH_AW_AGENT_OUTPUT }}
-          GH_AW_WORKFLOW_NAME: "Summarize Agent"
+          GH_AW_WORKFLOW_NAME: "Summarize Agent (Russian)"
         with:
           github-token: ${{ secrets.GH_AW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
           script: |
@@ -867,7 +867,7 @@ jobs:
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
           GH_AW_AGENT_OUTPUT: ${{ env.GH_AW_AGENT_OUTPUT }}
-          GH_AW_WORKFLOW_NAME: "Summarize Agent"
+          GH_AW_WORKFLOW_NAME: "Summarize Agent (Russian)"
           GH_AW_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           GH_AW_AGENT_CONCLUSION: ${{ needs.agent.result }}
           GH_AW_WORKFLOW_ID: "summarize-agent"
@@ -885,7 +885,7 @@ jobs:
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
           GH_AW_AGENT_OUTPUT: ${{ env.GH_AW_AGENT_OUTPUT }}
-          GH_AW_WORKFLOW_NAME: "Summarize Agent"
+          GH_AW_WORKFLOW_NAME: "Summarize Agent (Russian)"
           GH_AW_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           GH_AW_AGENT_CONCLUSION: ${{ needs.agent.result }}
           GH_AW_NOOP_MESSAGE: ${{ steps.noop.outputs.noop_message }}
@@ -931,7 +931,7 @@ jobs:
       - name: Setup threat detection
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
-          WORKFLOW_NAME: "Summarize Agent"
+          WORKFLOW_NAME: "Summarize Agent (Russian)"
           WORKFLOW_DESCRIPTION: "No description provided"
           HAS_PATCH: ${{ needs.agent.outputs.has_patch }}
         with:
@@ -1067,7 +1067,7 @@ jobs:
     env:
       GH_AW_ENGINE_ID: "copilot"
       GH_AW_WORKFLOW_ID: "summarize-agent"
-      GH_AW_WORKFLOW_NAME: "Summarize Agent"
+      GH_AW_WORKFLOW_NAME: "Summarize Agent (Russian)"
     outputs:
       create_discussion_error_count: ${{ steps.process_safe_outputs.outputs.create_discussion_error_count }}
       create_discussion_errors: ${{ steps.process_safe_outputs.outputs.create_discussion_errors }}
