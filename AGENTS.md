@@ -208,3 +208,63 @@ To update documentation, re-run the script (requires internet connection to `git
    # Over this
    search_web "gh-aw pattern"
    ```
+
+
+---
+
+## Lessons Learned
+
+### Lesson 1: Hello Agent
+**File**: `.github/workflows/hello-agent.md`
+
+Basic workflow responding to `@agent hello` comments in issues.
+- Learned: Basic workflow structure, `issue_comment` trigger, `add-comment` safe output
+
+### Lesson 2: Web Search Agent  
+**File**: `.github/workflows/web-search-agent.md`
+
+Web search functionality using Copilot engine (via MCP Gateway).
+- Learned: Using `web-search` tool, handling search results in comments
+- Note: Copilot shows warning but works through MCP Gateway
+
+### Lesson 3: Auto-Triage Agent
+**File**: `.github/workflows/auto-triage.md`
+
+Automatic issue classification and labeling on `issues: opened/edited`.
+- Learned: IssueOps pattern, `add-labels` safe output, label classification logic
+- **Critical Finding**: Copilot engine incorrectly uses `update_issue` instead of `add_labels`
+- Status: Partially working - comments work, labels don't (Copilot limitation)
+
+### Lesson 4: ChatOps Summarize Agent
+**File**: `.github/workflows/summarize-agent.md`
+
+Interactive `/summarize` slash command for issue discussions.
+- Learned: ChatOps pattern, `slash_command` trigger, sanitized context access
+- Key features:
+  - Command: `/summarize` in issue comments
+  - Uses `${{ needs.activation.outputs.text }}` for sanitized issue context
+  - Auto-reaction 👀 on triggering comment
+  - Generates structured summary with overview, key points, status
+
+**Trigger syntax**:
+```yaml
+on:
+  slash_command:
+    name: summarize
+    events: [issues, issue_comment]
+```
+
+**Context access**:
+```yaml
+# In workflow body:
+Analyze this content: "${{ needs.activation.outputs.text }}"
+```
+
+**How to test**:
+```bash
+# Create an issue with discussion
+gh issue create --title "Topic" --body "Discussion content..."
+
+# Trigger summary
+gh issue comment <number> --body "/summarize"
+```
