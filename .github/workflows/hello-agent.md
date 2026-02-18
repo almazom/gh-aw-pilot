@@ -4,10 +4,10 @@ on:
     types: [created]
 
 permissions:
-  issues: write
+  contents: read
 
-tools:
-  github: []
+safe-outputs:
+  add-comment:
 ---
 
 # Hello Agent
@@ -21,6 +21,8 @@ When someone comments `@agent hello` on an issue, respond with a friendly greeti
    - A wave emoji 👋
    - A brief introduction
    - Ask what they'd like help with
+
+Use the add-comment tool to post your response.
 
 Example response:
 "👋 Hello! I'm your GitHub Agentic Workflow assistant. I can help with code reviews, documentation, and automation. What would you like me to help you with?"
